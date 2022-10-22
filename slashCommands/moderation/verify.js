@@ -55,7 +55,7 @@ module.exports = {
                 );
         
                 await channel.send({ embeds: [embed], components: [buttons] });
-                return interaction.reply({ content: `Setted up verification.`, ephemeral: true });
+                return interaction.reply({ content: `Set up verification.`, ephemeral: true });
 
             } catch {
                 return interaction.reply({ content: `Sorry, I failed setting up...`, ephemeral: true });
