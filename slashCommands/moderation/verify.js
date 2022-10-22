@@ -39,6 +39,9 @@ module.exports = {
                 const title = interaction.options.get('embed_title').value;
                 const description = interaction.options.get('embed_description').value;         
                 const channel = interaction.options.get('channel').channel;
+
+                console.log(title);
+                console.log(description);
     
                 const embed = new EmbedBuilder()
                 .setTitle(title || `Verify`)
