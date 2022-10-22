@@ -15,10 +15,9 @@ module.exports = {
     ],
     autocomplete: (interaction, choices) => {
         const data = {
-            '908385923673231481': ['dog', 'cat', 'rabbit'],
-            '967751631695405097': ['lizard', 'horse', 'hamster']
+            '0': ['dog', 'cat', 'rabbit','lizard', 'horse', 'hamster'],
         }
-        data[interaction.guild.id].forEach(animal => {
+        data[0].forEach(animal => {
             choices.push({
                 name: `${animal}`,
                 value: `${animal}`

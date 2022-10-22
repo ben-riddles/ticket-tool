@@ -5,7 +5,6 @@ const chalk = require('chalk');
 client.on("ready", () => {
 	const activities = [
 		{ name: `${client.guilds.cache.size} Servers`, type: ActivityType.Listening },
-		{ name: `${client.channels.cache.size} Channels`, type: ActivityType.Playing },
 		{ name: `${client.users.cache.size} Users`, type: ActivityType.Watching },
 		{ name: `Discord.js v14`, type: ActivityType.Competing }
 	];
@@ -19,7 +18,7 @@ client.on("ready", () => {
 		if(i >= activities.length) i = 0
 		client.user.setActivity(activities[i])
 		i++;
-	}, 5000);
+	}, 50000);
 
 	let s = 0;
 	setInterval(() => {
