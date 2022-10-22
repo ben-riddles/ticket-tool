@@ -35,6 +35,8 @@ module.exports = {
     ],
 	run: async (client, interaction) => {
         if(interaction.options._subcommand === 'set') {
+            console.log(interaction.options.get('embed_title').value);
+            console.log(interaction.options.get('embed_description').value);
             try {
                 const title = interaction.options.get('embed_title').value;
                 const description = interaction.options.get('embed_description').value;
