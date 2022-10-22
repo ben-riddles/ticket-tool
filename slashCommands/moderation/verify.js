@@ -37,14 +37,17 @@ module.exports = {
         if(interaction.options._subcommand === 'set') {
             try {
                 let title = interaction.options.get('embed_title').value
+                console.log(title);
                 if(title === null) {
-                    let title = `Verify`
+                    const title = `Verify`
                 }
 
                 let description = interaction.options.get('embed_description').value
+                console.log(description);
                 if (description === null){
-                let description = `Click the button below to verify.`
-            }
+                    const description = `Click the button below to verify.`
+                }
+            
                 const channel = interaction.options.get('channel').channel;
     
                 const embed = new EmbedBuilder()
@@ -67,7 +70,6 @@ module.exports = {
             } catch {
                 return interaction.reply({ content: `Sorry, I failed setting up...`, ephemeral: true });
             }
-
         }
 	}
 };
