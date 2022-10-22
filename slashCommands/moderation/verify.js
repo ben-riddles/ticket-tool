@@ -36,18 +36,8 @@ module.exports = {
 	run: async (client, interaction) => {
         if(interaction.options._subcommand === 'set') {
             try {
-                let title = interaction.options.get('embed_title').value
-                console.log(title);
-                if(title === null) {
-                    const title = `Verify`
-                }
-
-                let description = interaction.options.get('embed_description').value
-                console.log(description);
-                if (description === null){
-                    const description = `Click the button below to verify.`
-                }
-            
+                const title = interaction.options.get('embed_title').value
+                const description = interaction.options.get('embed_description').value           
                 const channel = interaction.options.get('channel').channel;
     
                 const embed = new EmbedBuilder()
