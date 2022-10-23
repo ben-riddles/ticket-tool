@@ -5,7 +5,7 @@ module.exports = {
 	description: "Manage roles of the server or members.",
 	cooldown: 3000,
 	type: ApplicationCommandType.ChatInput,
-    	default_member_permissions: 'ManageRoles', // permission required
+    default_member_permissions: 'ManageRoles', // permission required
 	options: [
         {
             name: 'add',
@@ -25,10 +25,29 @@ module.exports = {
                     required: true
                 }
             ]
+        },
+        {
+            name: 'remove',
+            description: 'Remove role from a user.',
+            type: 1,
+            options: [
+                {
+                    name: 'role',
+                    description: 'The role you want to remove from the user.',
+                    type: 8,
+                    required: true
+                },
+                {
+                    name: 'user',
+                    description: 'The user you want to remove the role from.',
+                    type: 6,
+                    required: true
+                }
+            ]
         }
     ],
 	run: async (client, interaction) => {
-	 if(interaction.options._subcommand === 'add') {
+	    if(interaction.options._subcommand === 'add') {
             try {
                 const member = interaction.guild.members.cache.get(interaction.options.get('user').value);
                 const role = interaction.options.get('role').role;
@@ -44,7 +63,26 @@ module.exports = {
         
                 return interaction.reply({ embeds: [embed] })
             } catch {
-                return interaction.reply({ content: `Sorry, I failed adding that role to you!`, ephemeral: true });
+                return interaction.reply({ content: `Sorry, I failed adding that role! Maybe I am missing some permissions...`, ephemeral: true });
+            }
+
+        } else if (interaction.options._subcommand === 'remove') {
+            try {
+                const member = interaction.guild.members.cache.get(interaction.options.get('user').value);
+                const role = interaction.options.get('role').role;
+    
+                await member.roles.remove(role.id);
+                const embed = new EmbedBuilder()
+                .setTitle('Role Added')
+                .setDescription(`Successfully removed the role: ${role} from ${member}`)
+                .setColor('Green')
+                .setTimestamp()
+                .setThumbnail(member.user.displayAvatarURL())
+                .setFooter({ text: interaction.guild.name, iconURL: interaction.guild.iconURL() });
+        
+                return interaction.reply({ embeds: [embed] })
+            } catch {
+                return interaction.reply({ content: `Sorry, I failed adding that role! Maybe I am missing some permissions...`, ephemeral: true });
             }
 
         }
