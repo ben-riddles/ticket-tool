@@ -3,7 +3,6 @@ const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, Acti
 module.exports = {
 	name: 'verify',
 	description: "Set simple verification for this server.",
-	cooldown: 3000,
 	type: ApplicationCommandType.ChatInput,
     default_member_permissions: 'Administrator',
 	options: [
@@ -22,30 +21,24 @@ module.exports = {
                     name: 'embed_title',
                     description: 'The verification embed title.',
                     type: ApplicationCommandOptionType.String,
-                    required: false
+                    required: true
                 },
                 {
                     name: 'embed_description',
                     description: 'The verification embed description.',
                     type: ApplicationCommandOptionType.String,
-                    required: false
+                    required: true
                 }
             ]
         }
     ],
 	run: async (client, interaction) => {
         if(interaction.options._subcommand === 'set') {
-            try {
-                const title = interaction.options.get('embed_title').value;
-                const description = interaction.options.get('embed_description').value;         
+            try {       
                 const channel = interaction.options.get('channel').channel;
-
-                console.log(title);
-                console.log(description);
-    
                 const embed = new EmbedBuilder()
-                .setTitle(title || `Verify`)
-                .setDescription(description || `Click the button below to verify.`)
+                .setTitle(interaction.options.get('embed_title').value)
+                .setDescription(interaction.options.get('embed_description').value)
                 .setColor('Green')
                 .setFooter({ text: interaction.guild.name, iconURL: interaction.guild.iconURL() });
 
