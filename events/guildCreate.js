@@ -5,7 +5,7 @@ client.on("guildCreate", async (guild) => {
     if (guild.systemChannel) {
         const embed = new EmbedBuilder()
         .setTitle('Thank you for inviting Ticket Manager')
-        .setDescription('Thank you for inviting **Ticket Manager to this server**, I hope that you find me useful!')
+        .setDescription('Thank you for inviting **Ticket Manager** to this server, I hope that you find me useful!')
         .addFields(
             {
                 name: 'Commands',
