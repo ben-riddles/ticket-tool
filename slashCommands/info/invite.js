@@ -11,7 +11,7 @@ module.exports = {
 		const inviteUrl = `https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&permissions=8&scope=bot%20applications.commands`;
 		const embed = new EmbedBuilder()
 		.setTitle('Invite me')
-		.setDescription(`Invite the bot to your server. [Click here](${inviteUrl})`)
+		.setDescription(`Invite the bot to your server! \nClick the button below :D`)
 		.setColor('#03fcdb')
 		.setTimestamp()
 		.setThumbnail(client.user.displayAvatarURL())
@@ -20,7 +20,7 @@ module.exports = {
 		const actionRow = new ActionRowBuilder()
 		.addComponents([
 			new ButtonBuilder()
-			.setLabel('Invite')
+			.setLabel('Invite me')
 			.setURL(inviteUrl)
 			.setStyle(ButtonStyle.Link)
 		])

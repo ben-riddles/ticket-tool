@@ -1,5 +1,6 @@
 const { ActivityType } = require('discord.js');
 const client = require('..');
+const mongoose = require('mongoose')
 const chalk = require('chalk');
 
 client.on("ready", () => {
@@ -27,4 +28,8 @@ client.on("ready", () => {
 		s++;
 	}, 30000);
 	console.log(chalk.red(`Logged in as ${client.user.tag}!`))
+
+	mongoose.connect(process.env.MONGO_URI, {
+		keepAlive: true
+	})
 });

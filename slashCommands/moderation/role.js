@@ -73,9 +73,9 @@ module.exports = {
     
                 await member.roles.remove(role.id);
                 const embed = new EmbedBuilder()
-                .setTitle('Role Added')
+                .setTitle('Role Removed')
                 .setDescription(`Successfully removed the role: ${role} from ${member}`)
-                .setColor('Green')
+                .setColor('Red')
                 .setTimestamp()
                 .setThumbnail(member.user.displayAvatarURL())
                 .setFooter({ text: interaction.guild.name, iconURL: interaction.guild.iconURL() });
