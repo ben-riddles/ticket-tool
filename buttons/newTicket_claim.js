@@ -57,7 +57,7 @@ module.exports = {
             } else {
                 const errorEmbed = new EmbedBuilder()
                     .setTitle('Ticket Claimed')
-                    .setDescription(`This ticket has already been claimed by <@!${ticketDataDb.claimedBy}>, so you cannot claim this ticket`)
+                    .setDescription(`This ticket has already been claimed by <@!${ticketDataDb.claimedBy}>`)
                     .setFooter({ text: client.user.tag, iconURL: client.user.displayAvatarURL() })
                     .setTimestamp();
 

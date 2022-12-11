@@ -103,13 +103,13 @@ module.exports = {
                     .addComponents(
                         new ButtonBuilder()
                         .setLabel('🔒 Close')
-                        .setStyle('Secondary')
+                        .setStyle('Danger')
                         .setCustomId('newTicket_close')
                     )
                     .addComponents(
                         new ButtonBuilder()
                         .setLabel('👋 Claim')
-                        .setStyle('Secondary')
+                        .setStyle('Success')
                         .setCustomId('newTicket_claim')
                     );
 

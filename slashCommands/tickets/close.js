@@ -1,10 +1,11 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ApplicationCommandType } = require('discord.js');
-const ticketDataSchema = require('../schemas/ticket-data-schema');
-const guildConfigSchema = require('../schemas/guild-config-schema');
+const ticketDataSchema = require('../../schemas/ticket-data-schema');
+const guildConfigSchema = require('../../schemas/guild-config-schema');
 
 module.exports = {
-    id: 'newTicket_close',
-    permissions: [],
+    name: 'close',
+    description: "Close a ticket",
+    type: ApplicationCommandType.ChatInput,
     run: async(client, interaction) => {
         await interaction.deferReply()
         guildConfig = await guildConfigSchema.findOne({
@@ -58,14 +59,6 @@ module.exports = {
                 name: 'Claimed by',
                 value: ticketClaimedBy,
                 inline: true,
-            }, {
-                name: `\u200E`,
-                value: `\u200E`,
-                inline: true,
-            }, {
-                name: 'Reason',
-                value: 'No reason received',
-                inline: false,
             })
             .setFooter({ text: client.user.tag, iconURL: client.user.displayAvatarURL() })
             .setTimestamp();
